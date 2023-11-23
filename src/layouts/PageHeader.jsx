@@ -7,7 +7,7 @@ function PageHeader() {
     const [showFullSearchBar, setShowFullSearchBar] = useState(false)
 
   return (
-      <div className='flex gap-10 lg:gap20 justify-between pt-1 px-4 mb-6 bg-red-200'>
+      <div className='flex gap-10 lg:gap20 justify-between pt-1 px-4 mb-6'>
           {/* logo section  */}
           <div className={`gap-4 items-center flex-shrink-0 ${showFullSearchBar ? 'hidden' : 'flex'}`}>
               <button>
