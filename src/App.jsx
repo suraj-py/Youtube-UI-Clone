@@ -1,4 +1,5 @@
 import PageHeader from "./layouts/PageHeader"
+import Sidebar from "./layouts/Sidebar"
 import CategoryButtons from "./components/CategoryButtons"
 import VideoGridItem from "./components/VideoGridItem"
 import { categories, videos } from "./data/data"
@@ -12,7 +13,7 @@ function App() {
 
       <div className="grid grid-cols-[auto,1fr] flex-grow-1 overflow-auto">
         {/* sidebar section  */}
-        <div>Sidebar</div>
+        <Sidebar />
 
         {/* category buttons section  */}
         <div className="overflow-x-hidden px-8 pb-4">
