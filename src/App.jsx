@@ -1,6 +1,7 @@
 import PageHeader from "./layouts/PageHeader"
 import CategoryButtons from "./components/CategoryButtons"
-import { categories } from "./data/categories"
+import VideoGridItem from "./components/VideoGridItem"
+import { categories, videos } from "./data/data"
 import { useState } from "react"
 
 function App() {
@@ -10,7 +11,10 @@ function App() {
       <PageHeader />
 
       <div className="grid grid-cols-[auto,1fr] flex-grow-1 overflow-auto">
+        {/* sidebar section  */}
         <div>Sidebar</div>
+
+        {/* category buttons section  */}
         <div className="overflow-x-hidden px-8 pb-4">
         
           <div className="sticky top-0 bg-white z-10 pb-4">
@@ -20,7 +24,15 @@ function App() {
               onSelect={setSelectedCategory}
           />
           </div>
+          {/* video grid section  */}
+          <div className="grid gap-4 grid-cols-[repeat(auto-fill,minmax(300px,1fr))]">
+            {
+              videos.map(video => (
+                <VideoGridItem key={video.id} {...video} />
+              ))
+            }  
           </div>
+        </div>
       </div>
    </div>
   )
