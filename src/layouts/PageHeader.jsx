@@ -1,24 +1,16 @@
 import React, { useState } from 'react'
 import { Menu, Upload, Bell, User, Mic, Search, ArrowLeft } from 'lucide-react'
 import logo from '../assets/logo.png'
+import { useSidebarContext } from '../contexts/SidebarContext'
 
 function PageHeader() {
 
     const [showFullSearchBar, setShowFullSearchBar] = useState(false)
-
+    
   return (
       <div className='flex gap-10 lg:gap20 justify-between pt-1 px-4 mb-6'>
           {/* logo section  */}
-          <div className={`gap-4 items-center flex-shrink-0 ${showFullSearchBar ? 'hidden' : 'flex'}`}>
-              <button>
-                  <Menu />
-              </button>
-              <a href="/">
-                  <img src={logo}
-                      className='h-14'
-                      alt="logo image" />
-              </a>
-          </div>
+          <PageHeaderLogoSection hidden={showFullSearchBar}/>
 
           {/* search bar section  */}
           <form className={`md:flex gap-4 flex-grow justify-center items-center 
@@ -69,6 +61,25 @@ function PageHeader() {
           
     </div>
   )
+}
+
+export function PageHeaderLogoSection({ hidden=false }) {
+     const { toggle } = useSidebarContext()
+    return (
+        <>
+        {/* logo section  */}
+          <div className={`gap-4 items-center flex-shrink-0 ${hidden ? 'hidden' : 'flex'}`}>
+              <button onClick={toggle}>
+                  <Menu />
+              </button>
+              <a href="/">
+                  <img src={logo}
+                      className='h-14'
+                      alt="logo image" />
+              </a>
+            </div>
+        </>
+    )
 }
 
 export default PageHeader

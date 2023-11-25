@@ -4,10 +4,13 @@ import CategoryButtons from "./components/CategoryButtons"
 import VideoGridItem from "./components/VideoGridItem"
 import { categories, videos } from "./data/data"
 import { useState } from "react"
+import SidebarProvider from "./contexts/SidebarContext"
 
 function App() {
+  
   const [selectedCategory, setSelectedCategory] = useState(categories[0])
   return (
+    <SidebarProvider>
     <div className='max-h-screen flex flex-col'>
       <PageHeader />
 
@@ -35,7 +38,8 @@ function App() {
           </div>
         </div>
       </div>
-   </div>
+      </div>
+    </SidebarProvider>
   )
 }
 

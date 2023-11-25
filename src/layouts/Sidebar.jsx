@@ -1,20 +1,37 @@
-import { ChevronDown, ChevronUp, Clapperboard, Clock, Film, Flame, FlameIcon, Gamepad, History, Home, Library, Lightbulb, ListVideo, Music2, Newspaper, PlaySquare, Podcast, Radio, Repeat, Shirt, ShoppingBag, Trophy } from 'lucide-react'
+import { ChevronDown, ChevronUp, Clapperboard, Clock, Film, Flame, Gamepad, History, Home, Library, Lightbulb, ListVideo, Music2, Newspaper, PlaySquare, Podcast, Radio, Repeat, Shirt, ShoppingBag, Trophy } from 'lucide-react'
 import React, { Children, useState } from 'react'
 import { playlists, subscriptions } from '../data/data'
+import { useSidebarContext } from '../contexts/SidebarContext'
+import { PageHeaderLogoSection } from './PageHeader'
 function Sidebar() {
+    const {isLargeOpen, isSmallOpen, close } = useSidebarContext()
     return (
         <>
         {/* small sidebar section  */}
-        <aside className='sticky top-0 overflow-y-auto scrollbar-hidden border
-                    pb-4 flex flex-col gap-6 ml-1 lg:hidden'>
+        <aside className={`sticky top-0 overflow-y-auto scrollbar-hidden
+                    pb-4 flex flex-col gap-6 ml-1 ${isLargeOpen ? "lg:hidden" : "lg:flex"} `}
+            >
                 <SmallSideBarItem Icon={Home} title='Home' url='/' />
                 <SmallSideBarItem Icon={Repeat} title='Shorts' url='/shorts' />
                 <SmallSideBarItem Icon={Clapperboard} title='Subscriptions' url='/subscriptions' />
                 <SmallSideBarItem Icon={Library} title='Library' url='/library' />  
             </aside>
+       
+        {isSmallOpen && (
+        <div
+          onClick={close}
+          className="lg:hidden fixed inset-0 z-[999] bg-secondary-darK opacity-50"
+        />
+      )}
         {/* large sidebar section  */}
-        <aside className='w-56 lg:sticky absolute  top-0 overflow-y-auto scrollbar-hidden
-            pb-4 flex flex-col gap-2 px-2'>
+        
+        <aside className={`w-56 lg:sticky absolute  top-0 overflow-y-auto scrollbar-hidden
+            pb-4 flex-col gap-2 px-2 ${
+          isLargeOpen ? "lg:flex" : "lg:hidden"
+        } ${isSmallOpen ? "flex z-[999] bg-white max-h-screen" : "hidden"}`}>
+            <div className='lg:hidden pt-2 pb-4 px-2 sticky top-0 bg-white'>   
+                <PageHeaderLogoSection />
+            </div>
             <LargeSidebarSection>
                 <LargeSidebarItem Icon={Home} isActive title='Home' url='/' /> 
                 <LargeSidebarItem Icon={Repeat} title='Shorts' url='/shorts' />
@@ -52,7 +69,7 @@ function Sidebar() {
             </LargeSidebarSection>
             <hr />
             <LargeSidebarSection title="Explore">
-                <LargeSidebarItem Icon={FlameIcon} title="Trending" url="/trending" />
+                <LargeSidebarItem Icon={Flame} title="Trending" url="/trending" />
                 <LargeSidebarItem Icon={ShoppingBag} title="Shopping" url="/shopping" />
                 <LargeSidebarItem Icon={Music2} title="Music" url="/music" />
                 <LargeSidebarItem Icon={Film} title="Movies & TV" url="/movies-tv" />
