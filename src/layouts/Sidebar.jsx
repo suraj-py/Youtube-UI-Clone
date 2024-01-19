@@ -9,7 +9,7 @@ function Sidebar() {
         <>
         {/* small sidebar section  */}
         <aside className={`sticky top-0 overflow-y-auto scrollbar-hidden
-                    pb-4 flex flex-col gap-6 ml-1 ${isLargeOpen ? "lg:hidden" : "lg:flex"} `}
+                    pb-4 flex flex-col gap-8 ml-1 ${isLargeOpen ? "lg:hidden" : "lg:flex"} `}
             >
                 <SmallSideBarItem Icon={Home} title='Home' url='/' />
                 <SmallSideBarItem Icon={Repeat} title='Shorts' url='/shorts' />
@@ -29,7 +29,7 @@ function Sidebar() {
             pb-4 flex-col gap-2 px-2 ${
           isLargeOpen ? "lg:flex" : "lg:hidden"
         } ${isSmallOpen ? "flex z-[999] bg-white max-h-screen" : "hidden"}`}>
-            <div className='lg:hidden pt-2 pb-4 px-2 sticky top-0 bg-white'>   
+            <div className='lg:hidden pt-1 pb-4 px-2 sticky top-0 bg-white'>   
                 <PageHeaderLogoSection />
             </div>
             <LargeSidebarSection>
@@ -91,7 +91,7 @@ function Sidebar() {
 function SmallSideBarItem({ Icon, title, url}) {
     return (
         <a href={url} className='flex flex-col justify-center items-center gap-1'>
-                <Icon className='w-5 h-5' />
+                <Icon className='w-6 h-6' />
             <div className='text-xs text-center'>{title}</div>
         </a>
     )

@@ -8,7 +8,7 @@ function PageHeader() {
     const [showFullSearchBar, setShowFullSearchBar] = useState(false)
     
   return (
-      <div className='flex gap-10 lg:gap20 justify-between pt-1 px-4 mb-6'>
+      <div className='flex gap-10 lg:gap20 justify-between px-4 mb-1'>
           {/* logo section  */}
           <PageHeaderLogoSection hidden={showFullSearchBar}/>
 
@@ -48,7 +48,7 @@ function PageHeader() {
               <button className='md:hidden'>
                   <Mic />
               </button>
-              <button>
+              <button className=''>
                   <Upload />
               </button>
               <button>
@@ -74,7 +74,7 @@ export function PageHeaderLogoSection({ hidden=false }) {
               </button>
               <a href="/">
                   <img src={logo}
-                      className='h-14'
+                      className='h-24'
                       alt="logo image" />
               </a>
             </div>
