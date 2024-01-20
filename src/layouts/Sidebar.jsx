@@ -90,7 +90,7 @@ function Sidebar() {
 
 function SmallSideBarItem({ Icon, title, url}) {
     return (
-        <a href={url} className='flex flex-col justify-center items-center gap-1'>
+        <a href={url} className='flex flex-col justify-center items-center p-1 rounded-lg gap-1 hover:bg-secondary'>
                 <Icon className='w-6 h-6' />
             <div className='text-xs text-center'>{title}</div>
         </a>
@@ -122,7 +122,7 @@ function LargeSidebarSection({children, title, visibleItemCount=Number.POSITIVE_
 function LargeSidebarItem({Icon, title, url, isActive=false}) {
     return (
         <a href={url}
-            className={`w-full flex items-center rounded-lg gap-4 p-3
+            className={`w-full flex items-center rounded-lg gap-4 p-3 hover:bg-secondary
             ${isActive ? 'font-blod bg-neutral-100 hover:bg-secondary' : undefined }`}
         >
             {typeof Icon === "string" ? (
